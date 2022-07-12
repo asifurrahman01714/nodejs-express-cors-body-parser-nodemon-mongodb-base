@@ -8,19 +8,41 @@ const port = process.env.PORT || 5000;
 require('dotenv').config();
 console.log(process.env.DB_PASS,process.env.DB_USER)
 
-// firebase admin set up for verify idToken
-const admin = require("firebase-admin");
-const serviceAccount = require("./burj-al-arab-bafe3-firebase-adminsdk-q5wtu-5b0a97a05d.json");
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
-});
 
 app.use(cors())
 // parse application/json
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })); // for file
 
+
+app.get("/", (req,res)=>{
+    console.log("Requesting anyone");
+    res.send("Hi! I have got response")
+})
+
+
+app.listen(port, ()=>{
+    console.log("Server is running on port 5000");
+})
+
+
+
+
+
+
+
+
+// firebase admin set up for verify idToken
+/*
+const admin = require("firebase-admin");
+const serviceAccount = require("./burj-al-arab-bafe3-firebase-adminsdk-q5wtu-5b0a97a05d.json");
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+*/
+
 // MongoDB connection
+/*
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const mongoDbUserPassword = process.env.DB_PASS;
 const mongoDbUser = process.env.DB_USER;
@@ -74,19 +96,7 @@ client.connect(err => {
 
 });
 
-
-app.get("/", (req,res)=>{
-    console.log("Requesting anyone");
-    res.send("Hi! I have got response")
-})
-
-
-app.listen(port, ()=>{
-    console.log("Server is running on port 5000");
-})
-
-
-
+*/
 
 /*
 app.get('/', function (req, res) {
