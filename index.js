@@ -4,6 +4,7 @@ const app = express()
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const ObjectId = require('mongodb').ObjectId;
+const port = process.env.PORT || 5000;
 require('dotenv').config();
 console.log(process.env.DB_PASS,process.env.DB_USER)
 
@@ -80,7 +81,7 @@ app.get("/", (req,res)=>{
 })
 
 
-app.listen(process.env.PORT || 5000, ()=>{
+app.listen(port, ()=>{
     console.log("Server is running on port 5000");
 })
 
